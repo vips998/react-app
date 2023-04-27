@@ -58,6 +58,7 @@ const Service = ({ user, services, setServices,removeService }) => {
 
     return (
         <React.Fragment>
+            {/* Вывод списка услуг */}
             <h3>Список услуг</h3>
             {services.map(({ id, name, price, description ,coach }) => (
                 <div className="Service" key={id} id={id} >
