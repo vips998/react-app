@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import {coach} from "../Coach/Coach"
-import { Card, Typography, Input } from 'antd'
+import {Modal, Card, Typography, Input, Button } from 'antd'
 const CreateOption = () => {
     return (
         <React.Fragment>
@@ -15,7 +15,11 @@ const CreateOption = () => {
 }
 
 
+
 const ServiceCreate = ({ user, addService }) => {
+
+const [isModal, setModal] = useState(false)
+
 const handleSubmit = (e) => {
 e.preventDefault()
 
@@ -60,11 +64,21 @@ e.target.elements.descriptionService.value = ""
 }
 createService()
 }
+
+const ShowModal = () => {
+    setModal(true)
+}
+
+const HandleCancel = () => {
+    setModal(false)
+}
 return (
 <React.Fragment>
 {user.isAuthenticated === true && user.userRole === "admin" ? (
     <>
 <Typography><h1>Создание новой услуги</h1></Typography>
+<Button type="primary" onClick={ShowModal}>Создать услугу</Button>
+<Modal open={isModal} footer={null} onCancel={HandleCancel}>
 <Card>
 <form onSubmit={handleSubmit}>
 <Typography>Название: </Typography>
@@ -75,9 +89,10 @@ return (
 <CreateOption/><br/>
 <Typography>Введите описание услуги: </Typography>
 <Input type="text" name="descriptionService" placeholder="Введите описание:" /><br />
-<button type="submit">Создать</button>
+<Button htmlType="submit">Создать</Button>
 </form>
 </Card>
+</Modal>
 </>
 ) : ("")}
 </React.Fragment>

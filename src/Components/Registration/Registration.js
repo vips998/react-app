@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {Button, Card, Typography, Input} from 'antd'
 
 const Register = ({ user, setUser }) => {
   const [errorMessages, setErrorMessages] = useState([]);
@@ -57,26 +58,28 @@ const Register = ({ user, setUser }) => {
         <h3>Пользователь {user.userName} успешно зарегистрирован!</h3>
       ) : (
         <>
-          <h3>Вход</h3>
-          <form onSubmit={Register}>
-            <label>Почта </label>
-            <input type="text" name="email" placeholder="Почта" />
+          <h3>Регистрация</h3>
+          <Card>
+          <form style={{width:500}} onSubmit={Register}>
+            <Typography>Почта </Typography>
+            <Input type="text" name="email" placeholder="Почта" />
             <br />
-            <label>Никнейм </label>
-            <input type="text" name="nickname" placeholder="Никнейм" />
+            <Typography>Никнейм </Typography>
+            <Input type="text" name="nickname" placeholder="Никнейм" />
             <br />
-            <label>Пароль </label>
-            <input type="text" name="password" placeholder="Пароль" />
+            <Typography>Пароль </Typography>
+            <Input type="text" name="password" placeholder="Пароль" />
             <br />
-            <label>Подтверждение пароля </label>
-            <input
+            <Typography>Подтверждение пароля </Typography>
+            <Input
               type="text"
               name="passwordConfirm"
               placeholder="Подтверждение пароля"
             />
             <br />
-            <button type="submit">Войти</button>
+            <Button type="primary" htmlType="submit">Войти</Button>
           </form>
+          </Card>
           {renderErrorMessage()}
         </>
       )}

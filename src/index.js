@@ -8,7 +8,8 @@ import Layout from "./Components/Layout/Layout"
 import LogIn from "./Components/LogIn/LogIn"
 import LogOff from "./Components/LogOff/LogOff"
 import Register from './Components/Registration/Registration'
-
+import fitnes from './fitnes.jpg'
+import {Row} from 'antd'
 const App = () => {
 
     const [services, setServices] = useState([])
@@ -47,7 +48,8 @@ return (
 <BrowserRouter>
 <Routes>
 <Route path="/" element={<Layout user={user} />}>
-<Route index element={<h3>Главная страница</h3>} />
+<Route index element={<div><h2> Фи́тнес-клуб — место, сочетающее в себе большое разнообразие спортивных секций для проведения групповых программ, спортивный зал для игровых видов спорта, тренажёрный зал, плавательный бассейн, зал для бокса, студии фитнеса и карате.</h2>
+<Row align='center'><img src={fitnes}></img></Row></div>}/>
 <Route
 path="/services"
 element={

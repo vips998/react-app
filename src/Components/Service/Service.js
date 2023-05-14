@@ -75,8 +75,8 @@ const Service = ({ user, services, setServices,removeService }) => {
 
            {(user.isAuthenticated===true) && (user.userRole === "admin") ? (
             <Card>  
-            <Button onClick={() => deleteItem({ id })}>Удалить</Button> 
-            <Button onClick={() => serviceItem({ id })}>Изменить</Button>
+            <Button type="primary" onClick={() => deleteItem({ id })}>Удалить</Button> 
+            <Button type="primary" onClick={() => serviceItem({ id })}>Изменить</Button>
             </Card>
            ) : ("")} 
            </Card>
