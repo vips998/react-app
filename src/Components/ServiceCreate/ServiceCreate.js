@@ -1,6 +1,6 @@
 import React from "react"
 import {coach} from "../Coach/Coach"
-
+import { Card, Typography, Input } from 'antd'
 const CreateOption = () => {
     return (
         <React.Fragment>
@@ -40,7 +40,7 @@ headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify(service)
 }
 console.log(requestOptions);
-const response = await fetch("api/services", 
+const response = await fetch("/api/services/", 
 requestOptions)
 return await response.json()
 .then((data) => 
@@ -64,18 +64,20 @@ return (
 <React.Fragment>
 {user.isAuthenticated === true && user.userRole === "admin" ? (
     <>
-<h3>Создание новой услуги</h3>
+<Typography><h1>Создание новой услуги</h1></Typography>
+<Card>
 <form onSubmit={handleSubmit}>
-<label>Название: </label>
-<input type="text" name="nameService" placeholder="Введите услугу:" /><br />
-<label>Стоимость услуги: </label>
-<input type="text" name="priceService" placeholder="Введите стоимость:" /><br />
-<label>Выберите тренера: </label>
+<Typography>Название: </Typography>
+<Input type="text" name="nameService" placeholder="Введите услугу:" /><br />
+<Typography>Стоимость услуги: </Typography>
+<Input type="text" name="priceService" placeholder="Введите стоимость:" /><br />
+<Typography>Выберите тренера: </Typography>
 <CreateOption/><br/>
-<label>Введите описание услуги: </label>
-<input type="text" name="descriptionService" placeholder="Введите описание:" /><br />
+<Typography>Введите описание услуги: </Typography>
+<Input type="text" name="descriptionService" placeholder="Введите описание:" /><br />
 <button type="submit">Создать</button>
 </form>
+</Card>
 </>
 ) : ("")}
 </React.Fragment>

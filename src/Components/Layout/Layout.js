@@ -47,7 +47,7 @@ const items = [
         <Content className="site-layout" style={{ padding: "0 50px" }}>
         <Outlet />
         </Content>
-        
+
         <Footer style={{ textAlign: "center" }}>FitnesClub ©2023</Footer>
         </LayoutAntd>
         )
