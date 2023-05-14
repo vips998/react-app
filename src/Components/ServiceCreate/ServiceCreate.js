@@ -40,7 +40,7 @@ headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify(service)
 }
 console.log(requestOptions);
-const response = await fetch("https://localhost:7241/api/Service/", 
+const response = await fetch("api/services", 
 requestOptions)
 return await response.json()
 .then((data) => 

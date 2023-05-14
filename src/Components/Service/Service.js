@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import "./Style.css"
+import { Button, Card, Typography } from 'antd'
 const Service = ({ user, services, setServices,removeService }) => {
     useEffect(() => {
         const getServices = async () => {
@@ -59,20 +60,30 @@ const Service = ({ user, services, setServices,removeService }) => {
     return (
         <React.Fragment>
             {/* Вывод списка услуг */}
-            <h3>Список услуг</h3>
+            <Typography>
+            <h1>Список услуг</h1>
+            </Typography>
+            <Card>
             {services.map(({ id, name, price, description ,coach }) => (
                 <div className="Service" key={id} id={id} >
-                    <strong className='ServiceName'>{name}</strong>
-                    {(user.isAuthenticated===true) && (user.userRole === "admin") ? (
-                        <>
-                    <button onClick={() => deleteItem({ id })}>Удалить</button>
-           <button onClick={() => serviceItem({ id })}>Изменить</button>
-                        </>
-           ) : ("")}
-           
+            <Card>
+            
+            <Typography>
+            <h3 className='ServiceName'>{name}</h3>
+            </Typography>
            <br />{coach.fio} <br />{price} <br />{description} <br /><br />
+
+           {(user.isAuthenticated===true) && (user.userRole === "admin") ? (
+            <Card>  
+            <Button onClick={() => deleteItem({ id })}>Удалить</Button> 
+            <Button onClick={() => serviceItem({ id })}>Изменить</Button>
+            </Card>
+           ) : ("")} 
+           </Card>
+           
            </div>
             ))}
+            </Card>
         </React.Fragment>
     )
 }
